@@ -3,7 +3,7 @@ lab_1b.py
 
 This is a script that implements a simple calculator. It takes two numbers and an operation,
 then performs the operation and returns the result. 
-
+22
 The script asks the user to input the numbers and the operation to be performed,
 and prints the result to the terminal window.
 
@@ -37,19 +37,26 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
     else:
         raise ValueError("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
 
+def request_sanitized_number(prompt: str) -> float:
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a numeric value.")
+
 def main():
     
-    print(f"===== Simple Calculator =====")
+    print("===== Simple Calculator =====")
 
-    # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
+    num1 = request_sanitized_number("Enter the first number: ")
+    num2 = request_sanitized_number("Enter the second number: ")
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
-    # Perform the calculation and display the result
-    result = simple_calculator(operation, num1, num2)
-    print(f"The result of {operation}ing {num1} and {num2} is: {result}")
-
+    try:
+        result = simple_calculator(operation, num1, num2)
+        print(f"Result: {num1} {operation} {num2} = {result}")
+    except ValueError as e:
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
