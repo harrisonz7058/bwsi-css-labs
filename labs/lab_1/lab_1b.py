@@ -48,8 +48,8 @@ def main():
     
     print("===== Simple Calculator =====")
 
-    num1 = request_sanitized_number("Enter the first number: ")
-    num2 = request_sanitized_number("Enter the second number: ")
+    num1 = request_sanitized_number("enter the first number: ")
+    num2 = request_sanitized_number("enter the second number: ")
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     try:
